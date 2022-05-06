@@ -34,8 +34,7 @@ This will change the SVG according to the current *system* setting. The light an
 dark color variables in the CSS can be changed to reflect the containing page
 (the above example is optimized for GitHub dark theme).
 
-Here is an example that will render in dark mode in GitHub markdown depending
-on your system setting:
+<a href="https://raw.githubusercontent.com/jgraph/drawio-github/master/diagram-target-dark.svg" target="_blank">Here</a> is an example that will render in dark mode in GitHub markdown depending on your system setting:
 
 ![Diagram with system dark mode](diagram-light-dark.svg)
 
