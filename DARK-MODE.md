@@ -8,24 +8,13 @@ To support dark mode in SVG, add the following CSS to the SVG defs section:
 <style type="text/css">
 @media (prefers-color-scheme: dark)
 {
-    :root {--light-color: #c9d1d9; --dark-color: #0d1117; }
-    svg[style^="background-color:"] { background-color: var(--dark-color) !important; }
-    g[filter="url(#dropShadow)"] { filter: none !important; }
-    [stroke="rgb(0, 0, 0)"] { stroke: var(--light-color); }
-    [stroke="rgb(255, 255, 255)"] { stroke: var(--dark-color); }
-    [fill="rgb(0, 0, 0)"] { fill: var(--light-color); }
-    [fill="rgb(255, 255, 255)"] { fill: var(--dark-color); }
-    g[fill="rgb(0, 0, 0)"] text { fill: var(--light-color); }
-    div[data-drawio-colors*="color: rgb(0, 0, 0)"]
-        div { color: var(--light-color) !important; }
-    div[data-drawio-colors*="border-color: rgb(0, 0, 0)"]
-        { border-color: var(--light-color) !important; }
-    div[data-drawio-colors*="border-color: rgb(0, 0, 0)"]
-        div { border-color: var(--light-color) !important; }
-    div[data-drawio-colors*="background-color: rgb(255, 255, 255)"]
-        { background-color: var(--dark-color) !important; }
-    div[data-drawio-colors*="background-color: rgb(255, 255, 255)"]
-        div { background-color: var(--dark-color) !important; }
+    svg {
+        filter: invert(93%) hue-rotate(180deg);
+        background-color: transparent !important;
+    }
+    image {
+        filter: invert(100%) hue-rotate(180deg) saturate(1.25);
+    }
 }
 </style>
 ```
@@ -47,24 +36,15 @@ must be removed and :target must be added, resulting in the following CSS:
 
 ```css
 <style type="text/css">
-:root {--light-color: #c9d1d9; --dark-color: #0d1117; }
-svg:target[style^="background-color:"] { background-color: var(--dark-color) !important; }
-:target g[filter="url(#dropShadow)"] { filter: none !important; }
-:target [stroke="rgb(0, 0, 0)"] { stroke: var(--light-color); }
-:target [stroke="rgb(255, 255, 255)"] { stroke: var(--dark-color); }
-:target [fill="rgb(0, 0, 0)"] { fill: var(--light-color); }
-:target [fill="rgb(255, 255, 255)"] { fill: var(--dark-color); }
-:target g[fill="rgb(0, 0, 0)"] text { fill: var(--light-color); }
-:target div[data-drawio-colors*="color: rgb(0, 0, 0)"]
-    div { color: var(--light-color) !important; }
-:target div[data-drawio-colors*="border-color: rgb(0, 0, 0)"]
-    { border-color: var(--light-color) !important; }
-:target div[data-drawio-colors*="border-color: rgb(0, 0, 0)"]
-    div { border-color: var(--light-color) !important; }
-:target div[data-drawio-colors*="background-color: rgb(255, 255, 255)"]
-    { background-color: var(--dark-color) !important; }
-:target div[data-drawio-colors*="background-color: rgb(255, 255, 255)"]
-    div { background-color: var(--dark-color) !important; }
+svg:target {
+    filter: invert(93%) hue-rotate(180deg);
+}
+svg:target[style^="background-color: rgb(255, 255, 255);"] {
+    background-color: transparent !important;
+}
+:target image {
+    filter: invert(100%) hue-rotate(180deg) saturate(1.25);
+}
 </style>
 ```
 
